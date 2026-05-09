@@ -2,14 +2,10 @@
 
 ZAP add-on that automatically detects authorization bypasses by replaying HTTP requests with substituted credentials.
 
-## Screenshot
-
-![Crimson Authorizer in ZAP](docs/screenshot.png)
-
 ## Why
 
-Inspired by the Autorize extension for Burp Suite (https://github.com/portswigger/autorize) which is using a very elegant approach to automated authorization testing.
-Crimson Authorizer is a plugin for ZAP that continuously tests authorization as you browse. It intercepts your authenticated requests, replays them with different user credentials (or unauthenticated), and compares the responses to detect authorization bypasses. This makes it easier to find access control vulnerabilities during testing.
+
+Crimson Authorizer is a plugin for ZAP that continuously tests authorization as you browse. Inspired by the Autorize extension for Burp Suite (https://github.com/portswigger/autorize) which is using a very elegant approach to automated authorization testing. Crimson Authorizer intercepts your authenticated requests, replays them with different user credentials (or unauthenticated), and compares the responses to detect authorization bypasses. This makes it easier to find access control vulnerabilities during testing.
 
 ## Typical Usage
 
