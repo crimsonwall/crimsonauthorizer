@@ -23,19 +23,18 @@ Crimson Authorizer is designed to fit naturally into your penetration testing wo
 ### Step 2: Configure Test Users
 
 1. **Open the Users tab** in the Crimson Authorizer panel
-2. **Click "Add User"** and enter a name (e.g., "user1", "employee", "tester")
+2. **Click "Parse Headers"** then **click "Add User"** and enter a name (e.g., "user1", "employee", "tester")
 3. **Paste the captured headers** into the "Paste Raw Headers" text area
 4. **Click "Parse Headers"** to automatically extract header names and values
-5. **Repeat** for each additional user role you want to test (capture credentials for each role separately)
+5. **Repeat** the process (click "Parse Headers", then "Ok") for each additional user role you want to test
 
 You can also manually add headers by clicking the "Add Header" button in the parsed headers table.
 
 ### Step 3: Log In as Administrator
 
-1. **Log out** of the application (or use a different browser/incognito window)
-2. **Log in as an administrator** or high-privilege user
-3. **Configure ZAP to proxy** this browser session if using a separate window
-4. **Verify** you can access privileged endpoints that unprivileged users should not access
+1. **Log in as an administrator** or high-privilege user (keep all other user sessions alive — do not log out)
+2. **Configure ZAP to proxy** this browser session if using a separate window
+3. **Verify** you can access privileged endpoints that unprivileged users should not access
 
 ### Step 4: Start Authorization Testing
 
@@ -181,6 +180,9 @@ Once built, install the add-on via **Tools > Manage Add-ons > Load Add-on from F
 - **Check the status bar**: Shows live counts of enforced, bypassed, and undetermined results
 - **Use intercept filters**: Configure filters to exclude noise like health checks or static endpoints
 - **Full application test**: Use the API to test all URLs in the Site Tree for comprehensive coverage
+- **Keep sessions alive**: Do not terminate sessions or log out after capturing headers — all user sessions must remain active throughout testing
+- **Isolate browser sessions**: Configure your browser to forget everything on close, then open the browser, log in, capture credentials, close the browser — repeat for each user account you are going to test
+- **Plugin interference**: The plugin can sometimes interfere with navigation. Should this happen, simply disable the plugin, navigate through the problematic area, then enable it again
 
 ## How Authorization Detection Works
 
