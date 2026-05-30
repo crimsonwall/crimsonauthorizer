@@ -329,7 +329,7 @@ public final class ExtensionCrimsonAutorize extends ExtensionAdaptor implements 
                 trimResults();
                 results.add(result);
                 notifyResultAdded(result);
-                if (result.getWorstStatus() == EnforcementStatus.BYPASSED) {
+                if (result.getWorstStatus() == EnforcementStatus.BYPASSED && options.isEnableAlerts()) {
                     AlertRaiser.raiseAuthorizationBypass(msg, result, "Replay");
                 }
             }

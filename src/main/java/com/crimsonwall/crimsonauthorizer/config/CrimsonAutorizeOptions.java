@@ -46,6 +46,7 @@ public class CrimsonAutorizeOptions extends AbstractParam {
     private static final String INTERCEPTION_FILTER_RULES_KEY = BASE_KEY + ".interceptionFilterRules";
     private static final String MAX_MESSAGE_SIZE_KEY = BASE_KEY + ".maxMessageSize";
     private static final String MAX_RESULTS_KEY = BASE_KEY + ".maxResults";
+    private static final String ENABLE_ALERTS_KEY = BASE_KEY + ".enableAlerts";
     /** Legacy key — users are no longer persisted; cleared on startup to remove stale credentials. */
     private static final String LEGACY_USERS_KEY = BASE_KEY + ".users";
     private static final String DEFAULT_AUTH_HEADERS =
@@ -62,6 +63,7 @@ public class CrimsonAutorizeOptions extends AbstractParam {
     private boolean testUnauthenticated;
     private boolean useAndLogic;
     private boolean testRequester;
+    private boolean enableAlerts;
     private int maxMessageSize; // in bytes
     private int maxResults;
 
@@ -80,6 +82,7 @@ public class CrimsonAutorizeOptions extends AbstractParam {
         this.testUnauthenticated = true;
         this.useAndLogic = false;
         this.testRequester = false;
+        this.enableAlerts = true;
         this.maxMessageSize = DEFAULT_MAX_MESSAGE_SIZE_MB * 1024 * 1024;
         this.maxResults = DEFAULT_MAX_RESULTS;
         authHeadersToStrip.addAll(
@@ -94,6 +97,7 @@ public class CrimsonAutorizeOptions extends AbstractParam {
         testUnauthenticated = getConfig().getBoolean(TEST_UNAUTH_KEY, true);
         useAndLogic = getConfig().getBoolean(USE_AND_LOGIC_KEY, false);
         testRequester = getConfig().getBoolean(TEST_REQUESTER_KEY, false);
+        enableAlerts = getConfig().getBoolean(ENABLE_ALERTS_KEY, true);
 
         // Read limits - convert MB to bytes
         int maxSizeMb = getConfig().getInt(MAX_MESSAGE_SIZE_KEY, DEFAULT_MAX_MESSAGE_SIZE_MB);
@@ -262,6 +266,15 @@ public class CrimsonAutorizeOptions extends AbstractParam {
     public void setTestRequester(boolean testRequester) {
         this.testRequester = testRequester;
         getConfig().setProperty(TEST_REQUESTER_KEY, testRequester);
+    }
+
+    public boolean isEnableAlerts() {
+        return enableAlerts;
+    }
+
+    public void setEnableAlerts(boolean enableAlerts) {
+        this.enableAlerts = enableAlerts;
+        getConfig().setProperty(ENABLE_ALERTS_KEY, enableAlerts);
     }
 
     public int getMaxMessageSize() {

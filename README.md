@@ -124,6 +124,7 @@ The detection logic compares three aspects of the original (authenticated) respo
   - Enable/disable unauthenticated testing
   - Configure file extension exclusions
   - Set maximum message size and result count limits
+  - Enable/disable alerts to ZAP (authorization bypasses will only appear in the Results table when disabled)
 
 - **Users Tab**:
   - Add/remove/duplicate/rename test users
@@ -218,6 +219,8 @@ The plugin raises a ZAP alert when the worst status across all tests is **BYPASS
 - The unauthenticated test returns the same successful response as the original
 - Any low-privilege user test returns the same successful response as the original
 - Both original and test return `304 Not Modified` (unauthorized user gets cached access)
+
+**Note**: By default, authorization bypasses are raised as alerts in ZAP's Alert tree. This behavior can be disabled in the options panel (Tools → Options → Crimson Authorizer → Enable alerts to ZAP). When disabled, bypasses are only shown in the Results table and not registered as ZAP alerts.
 
 ## Performance Limits
 

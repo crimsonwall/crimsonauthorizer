@@ -44,6 +44,7 @@ public final class CrimsonAutorizeOptionsPanel extends AbstractParamPanel {
     private JCheckBox ignore304Checkbox;
     private JCheckBox testUnauthenticatedCheckbox;
     private JCheckBox testRequesterCheckbox;
+    private JCheckBox enableAlertsCheckbox;
     private JTextArea excludeExtensionsTextArea;
     private JTextField maxMessageSizeField;
     private JTextField maxResultsField;
@@ -84,6 +85,13 @@ public final class CrimsonAutorizeOptionsPanel extends AbstractParamPanel {
         testRequesterCheckbox.setToolTipText(
                 Constant.messages.getString("crimsonautorize.options.tooltip.testRequester"));
         panel.add(testRequesterCheckbox, gbc);
+
+        gbc.gridy++;
+        enableAlertsCheckbox =
+                new JCheckBox(Constant.messages.getString("crimsonautorize.options.enableAlerts"));
+        enableAlertsCheckbox.setToolTipText(
+                Constant.messages.getString("crimsonautorize.options.tooltip.enableAlerts"));
+        panel.add(enableAlertsCheckbox, gbc);
 
         // --- Limits ---
         gbc.gridy++;
@@ -159,6 +167,7 @@ public final class CrimsonAutorizeOptionsPanel extends AbstractParamPanel {
         ignore304Checkbox.setSelected(options.isIgnore304());
         testUnauthenticatedCheckbox.setSelected(options.isTestUnauthenticated());
         testRequesterCheckbox.setSelected(options.isTestRequester());
+        enableAlertsCheckbox.setSelected(options.isEnableAlerts());
         excludeExtensionsTextArea.setText(String.join("\n", options.getExcludeExtensions()));
         maxMessageSizeField.setText(String.valueOf(options.getMaxMessageSizeMb()));
         maxResultsField.setText(String.valueOf(options.getMaxResults()));
@@ -197,6 +206,7 @@ public final class CrimsonAutorizeOptionsPanel extends AbstractParamPanel {
         options.setIgnore304(ignore304Checkbox.isSelected());
         options.setTestUnauthenticated(testUnauthenticatedCheckbox.isSelected());
         options.setTestRequester(testRequesterCheckbox.isSelected());
+        options.setEnableAlerts(enableAlertsCheckbox.isSelected());
 
         List<String> extensions = new ArrayList<>();
         for (String line : excludeExtensionsTextArea.getText().split("\n")) {

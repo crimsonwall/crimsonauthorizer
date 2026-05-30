@@ -14,3 +14,4 @@ All notable changes to this add-on will be documented in this file.
 - Color-coded results table with dynamic columns
 - CSV and HTML export
 - ZAP REST API for automation
+- Enable/disable alerts option to control whether authorization bypasses are registered as ZAP alerts (enabled by default)
